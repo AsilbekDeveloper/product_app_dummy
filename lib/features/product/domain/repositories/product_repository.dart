@@ -1,3 +1,4 @@
+import 'package:product_app/features/product/domain/entities/category_entity.dart';
 import 'package:product_app/features/product/domain/entities/product_entity.dart';
 import 'package:product_app/features/product/domain/entities/sort_types.dart';
 
@@ -15,7 +16,7 @@ abstract class ProductRepository {
   Future<List<ProductEntity>> sortProducts({required SortType sortType});
 
   // Get all categories
-  Future<List<String>> getAllCategories();
+  Future<List<CategoryEntity>> getAllCategories();
 
   // Get products by category name
   Future<List<ProductEntity>> getProductsByCategory({
