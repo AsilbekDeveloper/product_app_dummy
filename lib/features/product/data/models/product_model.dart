@@ -1,8 +1,12 @@
-import 'package:product_app/features/product/domain/entities/dimension_entity.dart';
-import 'package:product_app/features/product/domain/entities/meta_entity.dart';
-import 'package:product_app/features/product/domain/entities/review_entity.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:product_app/features/product/data/models/dimension_model.dart';
+import 'package:product_app/features/product/data/models/meta_model.dart';
+import 'package:product_app/features/product/data/models/review_model.dart';
 
-class ProductEntity {
+part 'product_model.g.dart';
+
+@JsonSerializable()
+class ProductModel {
   final int id;
   final String title;
   final String description;
@@ -15,18 +19,18 @@ class ProductEntity {
   final String brand;
   final String sku;
   final int weight;
-  final DimensionEntity dimensions;
+  final DimensionModel dimensions;
   final String warrantyInformation;
   final String shippingInformation;
   final String availabilityStatus;
-  final List<ReviewEntity> reviews;
+  final List<ReviewModel> reviews;
   final String returnPolicy;
   final int minimumOrderQuantity;
-  final MetaEntity meta;
+  final MetaModel meta;
   final String thumbnail;
   final List<String> images;
 
-  ProductEntity({
+  ProductModel({
     required this.id,
     required this.title,
     required this.description,
@@ -50,4 +54,9 @@ class ProductEntity {
     required this.thumbnail,
     required this.images,
   });
+
+  factory ProductModel.fromJson(Map<String, dynamic> json) =>
+      _$ProductModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ProductModelToJson(this);
 }
