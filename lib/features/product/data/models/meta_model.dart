@@ -12,7 +12,17 @@ class MetaModel extends MetaEntity {
     required super.qrCode,
   });
 
-  factory MetaModel.fromJson(Map<String, dynamic> json) => _$MetaModelFromJson(json);
+  factory MetaModel.fromJson(Map<String, dynamic> json) =>
+      _$MetaModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$MetaModelToJson(this);
+
+  factory MetaModel.fromEntity(MetaEntity entity) {
+    return MetaModel(
+      createdAt: entity.createdAt,
+      updatedAt: entity.updatedAt,
+      barcode: entity.barcode,
+      qrCode: entity.qrCode,
+    );
+  }
 }

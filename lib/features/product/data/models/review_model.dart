@@ -13,7 +13,18 @@ class ReviewModel extends ReviewEntity {
     required super.reviewerEmail,
   });
 
-  factory ReviewModel.fromJson(Map<String, dynamic> json) => _$ReviewModelFromJson(json);
+  factory ReviewModel.fromJson(Map<String, dynamic> json) =>
+      _$ReviewModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ReviewModelToJson(this);
+
+  factory ReviewModel.fromEntity(ReviewEntity entity) {
+    return ReviewModel(
+      rating: entity.rating,
+      comment: entity.comment,
+      date: entity.date,
+      reviewerName: entity.reviewerName,
+      reviewerEmail: entity.reviewerEmail,
+    );
+  }
 }

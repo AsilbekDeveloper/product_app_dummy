@@ -5,9 +5,22 @@ part 'dimension_model.g.dart';
 
 @JsonSerializable()
 class DimensionModel extends DimensionEntity {
-  DimensionModel({required super.width, required super.height, required super.depth});
+  DimensionModel({
+    required super.width,
+    required super.height,
+    required super.depth,
+  });
 
-  factory DimensionModel.fromJson(Map<String, dynamic> json) => _$DimensionModelFromJson(json);
+  factory DimensionModel.fromJson(Map<String, dynamic> json) =>
+      _$DimensionModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$DimensionModelToJson(this);
+
+  factory DimensionModel.fromEntity(DimensionEntity entity) {
+    return DimensionModel(
+      width: entity.width,
+      height: entity.height,
+      depth: entity.depth,
+    );
+  }
 }

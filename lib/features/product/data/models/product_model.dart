@@ -2,6 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:product_app/features/product/data/models/dimension_model.dart';
 import 'package:product_app/features/product/data/models/meta_model.dart';
 import 'package:product_app/features/product/data/models/review_model.dart';
+import 'package:product_app/features/product/domain/entities/product_entity.dart';
 
 part 'product_model.g.dart';
 
@@ -59,4 +60,30 @@ class ProductModel {
       _$ProductModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProductModelToJson(this);
+
+  factory ProductModel.fromEntity(ProductEntity entity) {
+    return ProductModel(id: entity.id,
+        title: entity.title,
+        description: entity.description,
+        category: entity.category,
+        price: entity.price,
+        discountPercentage: entity.discountPercentage,
+        rating: entity.rating,
+        stock: entity.stock,
+        tags: entity.tags,
+        brand: entity.brand,
+        sku: entity.sku,
+        weight: entity.weight,
+        dimensions: DimensionModel.fromEntity(entity.dimensions),
+        warrantyInformation: entity.warrantyInformation,
+        shippingInformation: entity.shippingInformation,
+        availabilityStatus: entity.availabilityStatus,
+        reviews: entity.reviews.map((review) => ReviewModel.fromEntity(review)).toList(),
+        returnPolicy: entity.returnPolicy,
+        minimumOrderQuantity: entity.minimumOrderQuantity,
+        meta: MetaModel.fromEntity(entity.meta),
+        thumbnail: entity.thumbnail,
+        images: entity.images,
+    );
+  }
 }
