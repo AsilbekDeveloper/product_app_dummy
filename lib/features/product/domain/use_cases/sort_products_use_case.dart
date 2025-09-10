@@ -7,7 +7,7 @@ class SortProductsUseCase {
 
   SortProductsUseCase({required this.productRepository});
 
-  Future<List<ProductEntity>> call({required SortType sortType}) {
-    return productRepository.sortProducts(sortType: sortType);
+  Future<List<ProductEntity>> call({required SortType sortType, required String order}) {
+    return productRepository.sortProducts(sortType: sortType, order: order);
   }
 }

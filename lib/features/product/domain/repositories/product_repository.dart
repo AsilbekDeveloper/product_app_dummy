@@ -13,7 +13,7 @@ abstract class ProductRepository {
   Future<List<ProductEntity>> searchProduct({required String productTitle});
 
   // Sort products by the selected sort type
-  Future<List<ProductEntity>> sortProducts({required SortType sortType});
+  Future<List<ProductEntity>> sortProducts({required SortType sortType, required String order});
 
   // Get all categories
   Future<List<CategoryEntity>> getAllCategories();
