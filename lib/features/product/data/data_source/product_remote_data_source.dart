@@ -21,7 +21,7 @@ abstract class ProductRemoteDataSource {
   Future<List<CategoryEntity>> getAllCategories();
 
   Future<List<ProductEntity>> getProductsByCategory({
-    required String categoryName,
+    required String categoryTitle,
   });
 
   Future<void> addProduct({required ProductEntity product});
@@ -90,10 +90,10 @@ class ProductRemoteDataSourceImpl extends ProductRemoteDataSource {
 
   @override
   Future<List<ProductEntity>> getProductsByCategory({
-    required String categoryName,
+    required String categoryTitle,
   }) async {
     final response = await apiClient.get(
-      ApiEndpoints.productsByCategory(categoryName),
+      ApiEndpoints.productsByCategory(categoryTitle),
     );
     final List products = response["products"];
     return products

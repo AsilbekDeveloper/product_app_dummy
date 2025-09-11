@@ -39,9 +39,9 @@ class ProductRepositoryImpl extends ProductRepository {
 
   @override
   Future<List<ProductEntity>> getProductsByCategory({
-    required String categoryName,
+    required String categoryTitle,
   }) {
-    return remoteDataSource.getProductsByCategory(categoryName: categoryName);
+    return remoteDataSource.getProductsByCategory(categoryTitle: categoryTitle);
   }
 
   @override

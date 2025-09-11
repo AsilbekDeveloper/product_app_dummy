@@ -6,7 +6,7 @@ class GetProductsByCategoryUseCase {
 
   GetProductsByCategoryUseCase({required this.productRepository});
 
-  Future<List<ProductEntity>> call({required String categoryName}) {
-    return productRepository.getProductsByCategory(categoryName: categoryName);
+  Future<List<ProductEntity>> call({required String categoryTitle}) {
+    return productRepository.getProductsByCategory(categoryTitle: categoryTitle);
   }
 }

@@ -20,7 +20,7 @@ abstract class ProductRepository {
 
   // Get products by category name
   Future<List<ProductEntity>> getProductsByCategory({
-    required String categoryName,
+    required String categoryTitle,
   });
 
   // Add a new product
