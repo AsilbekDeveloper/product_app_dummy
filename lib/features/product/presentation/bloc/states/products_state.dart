@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:product_app/features/product/domain/entities/category_entity.dart';
 import 'package:product_app/features/product/domain/entities/product_entity.dart';
 
 part 'products_state.freezed.dart';
@@ -24,12 +25,12 @@ class ProductsState with _$ProductsState {
   const factory ProductsState.sortedProduct(List<ProductEntity> products) = _SortedProduct;
 
   /// All categories loaded
-  const factory ProductsState.categoriesLoaded(List<String> categories) = _CategoriesLoaded;
+  const factory ProductsState.categoriesLoaded(List<CategoryEntity> categories) = _CategoriesLoaded;
 
   /// Products of a category loaded
-  const factory ProductsState.productsByCategoryLoaded(String category, List<ProductEntity> products) = _ProductsByCategoryLoaded;
+  const factory ProductsState.productsByCategoryLoaded(List<ProductEntity> products) = _ProductsByCategoryLoaded;
 
-  /// Add, update or delete successful
+  /// Success state
   const factory ProductsState.success(String message) = _Success;
 
   /// Error state
