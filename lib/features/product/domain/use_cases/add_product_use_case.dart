@@ -6,7 +6,7 @@ class AddProductUseCase {
 
   AddProductUseCase({required this.productRepository});
 
-  Future<void> call({required ProductEntity product}) {
+  Future<ProductEntity> call({required ProductEntity product}) {
     return productRepository.addProduct(product: product);
   }
 }
