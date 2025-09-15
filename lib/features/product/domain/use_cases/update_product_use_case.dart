@@ -6,7 +6,7 @@ class UpdateProductUseCase {
 
   UpdateProductUseCase({required this.productRepository});
 
-  Future<void> call({required int id, required ProductEntity product}) {
-    return productRepository.updateProduct(id: id, product: product);
+  Future<ProductEntity> call({required ProductEntity product}) {
+    return productRepository.updateProduct(product: product);
   }
 }
