@@ -45,16 +45,13 @@ class ProductRepositoryImpl extends ProductRepository {
   }
 
   @override
-  Future<void> addProduct({required ProductEntity product}) {
+  Future<ProductEntity> addProduct({required ProductEntity product}) {
     return remoteDataSource.addProduct(product: product);
   }
 
   @override
-  Future<void> updateProduct({
-    required int id,
-    required ProductEntity product,
-  }) {
-    return remoteDataSource.updateProduct(id: id, product: product);
+  Future<ProductEntity> updateProduct({required ProductEntity product}) {
+    return remoteDataSource.updateProduct(product: product);
   }
 
   @override

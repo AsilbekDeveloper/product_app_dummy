@@ -24,10 +24,10 @@ abstract class ProductRepository {
   });
 
   // Add a new product
-  Future<void> addProduct({required ProductEntity product});
+  Future<ProductEntity> addProduct({required ProductEntity product});
 
-  // Update an existing product by id
-  Future<void> updateProduct({required int id, required ProductEntity product});
+  // Update an existing product
+  Future<ProductEntity> updateProduct({required ProductEntity product});
 
   // Delete a product by id
   Future<void> deleteProduct({required int id});
