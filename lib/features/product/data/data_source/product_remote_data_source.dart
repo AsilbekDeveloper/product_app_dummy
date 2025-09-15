@@ -24,9 +24,9 @@ abstract class ProductRemoteDataSource {
     required String categoryTitle,
   });
 
-  Future<void> addProduct({required ProductEntity product});
+  Future<ProductEntity> addProduct({required ProductEntity product});
 
-  Future<void> updateProduct({required int id, required ProductEntity product});
+  Future<ProductEntity> updateProduct({required ProductEntity product});
 
   Future<void> deleteProduct({required int id});
 }
@@ -102,9 +102,13 @@ class ProductRemoteDataSourceImpl extends ProductRemoteDataSource {
   }
 
   @override
-  Future<void> addProduct({required ProductEntity product}) async {
+  Future<ProductEntity> addProduct({required ProductEntity product}) async {
     final model = ProductModel.fromEntity(product);
-    await apiClient.post(ApiEndpoints.addProduct, data: model.toJson());
+    final response = await apiClient.post(
+      ApiEndpoints.addProduct,
+      data: model.toJson(),
+    );
+    return ProductModel.fromJson(response).toEntity();
   }
 
   @override
@@ -113,11 +117,12 @@ class ProductRemoteDataSourceImpl extends ProductRemoteDataSource {
   }
 
   @override
-  Future<void> updateProduct({
-    required int id,
-    required ProductEntity product,
-  }) async {
+  Future<ProductEntity> updateProduct({required ProductEntity product}) async {
     final productModel = ProductModel.fromEntity(product);
-    await apiClient.put(ApiEndpoints.updateProduct(id), data: productModel.toJson());
+    final response = await apiClient.put(
+      ApiEndpoints.updateProduct(product.id),
+      data: productModel.toJson(),
+    );
+    return ProductModel.fromJson(response).toEntity();
   }
 }
