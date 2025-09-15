@@ -18,6 +18,7 @@ class ReviewModel extends ReviewEntity {
 
   Map<String, dynamic> toJson() => _$ReviewModelToJson(this);
 
+  /// From Entity to Model
   factory ReviewModel.fromEntity(ReviewEntity entity) {
     return ReviewModel(
       rating: entity.rating,
@@ -25,6 +26,17 @@ class ReviewModel extends ReviewEntity {
       date: entity.date,
       reviewerName: entity.reviewerName,
       reviewerEmail: entity.reviewerEmail,
+    );
+  }
+
+  /// From Model to Entity
+  ReviewEntity toEntity() {
+    return ReviewEntity(
+      rating: rating,
+      comment: comment,
+      date: date,
+      reviewerName: reviewerName,
+      reviewerEmail: reviewerEmail,
     );
   }
 }

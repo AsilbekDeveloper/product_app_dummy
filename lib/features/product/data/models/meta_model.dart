@@ -17,12 +17,23 @@ class MetaModel extends MetaEntity {
 
   Map<String, dynamic> toJson() => _$MetaModelToJson(this);
 
+  /// From Entity to Model
   factory MetaModel.fromEntity(MetaEntity entity) {
     return MetaModel(
       createdAt: entity.createdAt,
       updatedAt: entity.updatedAt,
       barcode: entity.barcode,
       qrCode: entity.qrCode,
+    );
+  }
+
+  /// From Model to Entity
+  MetaEntity toEntity() {
+    return MetaEntity(
+      createdAt: createdAt,
+      updatedAt: updatedAt,
+      barcode: barcode,
+      qrCode: qrCode,
     );
   }
 }

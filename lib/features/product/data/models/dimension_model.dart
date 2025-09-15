@@ -16,11 +16,21 @@ class DimensionModel extends DimensionEntity {
 
   Map<String, dynamic> toJson() => _$DimensionModelToJson(this);
 
+  /// From Entity to Model
   factory DimensionModel.fromEntity(DimensionEntity entity) {
     return DimensionModel(
       width: entity.width,
       height: entity.height,
       depth: entity.depth,
+    );
+  }
+
+  /// From Model to Entity
+  DimensionEntity toEntity() {
+    return DimensionEntity(
+      width: width,
+      height: height,
+      depth: depth,
     );
   }
 }

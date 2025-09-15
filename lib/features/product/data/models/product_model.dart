@@ -61,6 +61,7 @@ class ProductModel {
 
   Map<String, dynamic> toJson() => _$ProductModelToJson(this);
 
+  /// From Entity to Model
   factory ProductModel.fromEntity(ProductEntity entity) {
     return ProductModel(id: entity.id,
         title: entity.title,
@@ -84,6 +85,34 @@ class ProductModel {
         meta: MetaModel.fromEntity(entity.meta),
         thumbnail: entity.thumbnail,
         images: entity.images,
+    );
+  }
+
+  /// From Model to Entity
+  ProductEntity toEntity() {
+    return ProductEntity(
+      id: id,
+      title: title,
+      description: description,
+      category: category,
+      price: price,
+      discountPercentage: discountPercentage,
+      rating: rating,
+      stock: stock,
+      tags: tags,
+      brand: brand,
+      sku: sku,
+      weight: weight,
+      dimensions: dimensions.toEntity(),
+      warrantyInformation: warrantyInformation,
+      shippingInformation: shippingInformation,
+      availabilityStatus: availabilityStatus,
+      reviews: reviews.map((review) => review.toEntity()).toList(),
+      returnPolicy: returnPolicy,
+      minimumOrderQuantity: minimumOrderQuantity,
+      meta: meta.toEntity(),
+      thumbnail: thumbnail,
+      images: images,
     );
   }
 }
