@@ -5,7 +5,9 @@ import 'package:product_app/core/di/injection_container.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setup();
-  runApp(const MyApp());
+  runApp(
+    BlocProvider(create: (context) => sl<ProductsBloc>(), child: const MyApp()),
+  );
 }
 
 
