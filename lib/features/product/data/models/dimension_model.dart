@@ -1,9 +1,5 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:product_app/features/product/domain/entities/dimension_entity.dart';
 
-part 'dimension_model.g.dart';
-
-@JsonSerializable()
 class DimensionModel extends DimensionEntity {
   DimensionModel({
     required super.width,
@@ -11,10 +7,23 @@ class DimensionModel extends DimensionEntity {
     required super.depth,
   });
 
-  factory DimensionModel.fromJson(Map<String, dynamic> json) =>
-      _$DimensionModelFromJson(json);
+  /// Manual fromJson
+  factory DimensionModel.fromJson(Map<String, dynamic> json) {
+    return DimensionModel(
+      width: (json['width'] as num?)?.toDouble() ?? 0.0,
+      height: (json['height'] as num?)?.toDouble() ?? 0.0,
+      depth: (json['depth'] as num?)?.toDouble() ?? 0.0,
+    );
+  }
 
-  Map<String, dynamic> toJson() => _$DimensionModelToJson(this);
+  /// Manual toJson
+  Map<String, dynamic> toJson() {
+    return {
+      "width": width,
+      "height": height,
+      "depth": depth,
+    };
+  }
 
   /// From Entity to Model
   factory DimensionModel.fromEntity(DimensionEntity entity) {

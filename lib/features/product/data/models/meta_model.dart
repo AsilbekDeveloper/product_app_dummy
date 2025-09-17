@@ -1,9 +1,5 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:product_app/features/product/domain/entities/meta_entity.dart';
 
-part 'meta_model.g.dart';
-
-@JsonSerializable()
 class MetaModel extends MetaEntity {
   MetaModel({
     required super.createdAt,
@@ -12,10 +8,25 @@ class MetaModel extends MetaEntity {
     required super.qrCode,
   });
 
-  factory MetaModel.fromJson(Map<String, dynamic> json) =>
-      _$MetaModelFromJson(json);
+  /// Manual fromJson
+  factory MetaModel.fromJson(Map<String, dynamic> json) {
+    return MetaModel(
+      createdAt: json['createdAt'] as String? ?? "",
+      updatedAt: json['updatedAt'] as String? ?? "",
+      barcode: json['barcode'] as String? ?? "",
+      qrCode: json['qrCode'] as String? ?? "",
+    );
+  }
 
-  Map<String, dynamic> toJson() => _$MetaModelToJson(this);
+  /// Manual toJson
+  Map<String, dynamic> toJson() {
+    return {
+      "createdAt": createdAt,
+      "updatedAt": updatedAt,
+      "barcode": barcode,
+      "qrCode": qrCode,
+    };
+  }
 
   /// From Entity to Model
   factory MetaModel.fromEntity(MetaEntity entity) {

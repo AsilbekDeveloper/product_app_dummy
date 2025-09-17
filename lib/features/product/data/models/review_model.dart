@@ -1,9 +1,5 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:product_app/features/product/domain/entities/review_entity.dart';
 
-part 'review_model.g.dart';
-
-@JsonSerializable()
 class ReviewModel extends ReviewEntity {
   ReviewModel({
     required super.rating,
@@ -13,10 +9,27 @@ class ReviewModel extends ReviewEntity {
     required super.reviewerEmail,
   });
 
-  factory ReviewModel.fromJson(Map<String, dynamic> json) =>
-      _$ReviewModelFromJson(json);
+  /// Manual fromJson
+  factory ReviewModel.fromJson(Map<String, dynamic> json) {
+    return ReviewModel(
+      rating: (json['rating'] as num?)?.toInt() ?? 0,
+      comment: json['comment'] as String? ?? "",
+      date: DateTime.tryParse(json['date'] as String? ?? "") ?? DateTime.now(),
+      reviewerName: json['reviewerName'] as String? ?? "",
+      reviewerEmail: json['reviewerEmail'] as String? ?? "",
+    );
+  }
 
-  Map<String, dynamic> toJson() => _$ReviewModelToJson(this);
+  /// Manual toJson
+  Map<String, dynamic> toJson() {
+    return {
+      "rating": rating,
+      "comment": comment,
+      "date": date.toIso8601String(),
+      "reviewerName": reviewerName,
+      "reviewerEmail": reviewerEmail,
+    };
+  }
 
   /// From Entity to Model
   factory ReviewModel.fromEntity(ReviewEntity entity) {
